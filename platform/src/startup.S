@@ -1,0 +1,14 @@
+#include "memmap.h"
+
+.section .text.init
+.global _start
+_start:
+    .option push
+    .option norelax
+    la gp, __global_pointer$
+    .option pop
+    la sp, __STACK_TOP
+
+    jal init
+    .end
+
