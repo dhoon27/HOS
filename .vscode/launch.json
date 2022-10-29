@@ -1,0 +1,23 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "RISCV",
+            "type": "gdb",
+            "request": "attach",
+            "gdbpath": "/home/dhoon/bin/riscv/bin/riscv32-unknown-elf-gdb",
+            "executable": "./build/hos.elf",
+            "remote": true,
+            "target": "localhost:1234",
+            "cwd": "${workspaceRoot}",
+            "autorun": [
+                "load"
+                "b _start"
+            ]
+            // "valuesFormatting": "parseText"
+        }
+    ]
+}

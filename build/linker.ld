@@ -2,8 +2,8 @@ OUTPUT_ARCH(riscv)
 
 MEMORY
 {
-    SRAM (rx) : ORIGIN = 0x00000000, LENGTH = 4096
-    RAM (rwx) : ORIGIN = 0x00001000, LENGTH = 4096
+    SRAM (rx) : ORIGIN = 0x50000000, LENGTH = 4096
+    RAM (rwx) : ORIGIN = 0x8A000000, LENGTH = 4096
 }
 
 ENTRY(_start)
@@ -11,7 +11,7 @@ ENTRY(_start)
 SECTIONS
 {
     /*PROVIDE(__executable_start = SEGMENT_START("text-segment", 0x00000000)); */
-    . = 0x00000000;
+    . = ORIGIN(SRAM);
     .text :
     {
         *(.text.init)
@@ -38,7 +38,7 @@ SECTIONS
     {
         *(.bss)
         . = ALIGN(4);
-        __bss_end = .;
+        /* __bss_end = .; */
     } >RAM
 
     

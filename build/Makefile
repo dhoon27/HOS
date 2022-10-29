@@ -23,11 +23,11 @@ CCFLAGS = -Wall -c -g -I$(INC) -march=$(MARCH) -mabi=$(MABI)
 ASFLAGS = -Wall -c -g -I$(INC) -march=$(MARCH) -mabi=$(MABI)
 LDFLAGS = -g
 LDFLAGS += -Wall
-LDFLAGS += -nostdlib -nodefaultlibs -nostartfiles
+LDFLAGS += -ffreestanding -Wl,--gc-sections -nostdlib -nodefaultlibs -nostartfiles
 LDFLAGS += -march=$(MARCH) -mabi=$(MABI)
-LDFLAGS += -T linker.ld
+LDFLAGS += -T riscv32-virt.ld#linker.ld
 
-TARGET = hos.elf
+TARGET = hos.out
 
 all: $(TARGET)
 
